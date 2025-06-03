@@ -129,4 +129,27 @@ class Config extends Controller
             $this->success('修改文件存储成功！');
         }
     }
+
+    /**
+     * 微信推客机构配置
+     * @auth true
+     * @menu true
+     * @throws \think\admin\Exception
+     */
+    public function tuike()
+    {
+        $this->NotifyUrl = sysuri('index/notify/index', [], false, true);
+        if ($this->request->isGet()) {
+            $this->title = '微信推客机构配置';
+            $this->geoip = $this->app->cache->get('mygeoip', '');
+            if (empty($this->geoip)) {
+                $this->geoip = gethostbyname($this->request->host());
+                $this->app->cache->set('mygeoip', $this->geoip, 360);
+            }
+            $this->fetch();
+        } else {
+            foreach ($this->request->post() as $k => $v) sysconf($k, $v);
+            $this->success('微信推客机构配置保存成功！');
+        }
+    }
 }

@@ -1,0 +1,82 @@
+{extend name="main"}
+
+{block name="content"}
+<div class="think-box-shadow margin-top-15">
+<form action="{:request()->url()}" method="post" data-auto="true" class="layui-form layui-card shadow-none">
+    <div class="layui-card-header border-0" style="height:auto">
+        <div class="layui-bg-gray padding-20  border-radius-5" style="line-height:2em">
+            需要先开通微信推客机构，交纳保存金，然后在推客机构后台->设置->开放信息，关联小程序
+        </div>
+    </div>
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>小程序AppId</b><br><span class="nowrap color-desc">小程序APPID</span></label>
+            <div class="layui-input-block">
+                <input name="weapp.appid" vali-name="小程序APPID" placeholder="请输入以wx开头的18位小程序APPID（必填）" pattern="^wx[0-9a-z]{16}$" maxlength="18" required="required" value="{:sysconf('weapp.appid')}" class="layui-input">
+                <p class="help-block">小程序APPID是所有接口必要参数，可以在小程序平台 [ 管理 > 开发管理 > 开发设置 ] 页面获取。</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>小程序AppSecret</b><br><span class="nowrap color-desc">小程序 Secret</span></label>
+            <div class="layui-input-block">
+                <input name="weapp.appsecret" required vali-name="接口密钥" placeholder="请输入32位小程序接口密钥AppSecret（必填）" value="{:sysconf('weapp.appsecret')}" maxlength="32" pattern="^[0-9a-z]{32}$" class="layui-input">
+                <p class="help-block">小程序应用密钥是所有接口必要参数，可以在小程序平台 [ 管理 > 开发管理 > 开发设置 ] 页面授权后获取。</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>推客机构AppId</b><br><span class="nowrap color-desc">推客机构APPID</span></label>
+            <div class="layui-input-block">
+                <input name="tuike.appid" vali-name="推客机构APPID" placeholder="请输入以wx开头的18位推客机构APPID（必填）" pattern="^wx[0-9a-z]{16}$" maxlength="18" required="required" value="{:sysconf('tuike.appid')}" class="layui-input">
+                <p class="help-block">推客机构APPID是所有接口必要参数，可以在推客机构平台 [ 设置 > 开放信息 ] 页面获取。</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>推客机构AppSecret</b><br><span class="nowrap color-desc">推客机构 Secret</span></label>
+            <div class="layui-input-block">
+                <input name="tuike.appsecret" required vali-name="接口密钥" placeholder="请输入32位推客机构接口密钥AppSecret（必填）" value="{:sysconf('tuike.appsecret')}" maxlength="32" pattern="^[0-9a-z]{32}$" class="layui-input">
+                <p class="help-block">推客机构应用密钥是所有接口必要参数，可以在推客机构平台 [ 设置 > 开放信息 ] 页面授权后获取。</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>推客机构Token</b><br><span class="nowrap color-desc">推客机构令牌</span></label>
+            <div class="layui-input-block">
+                <input name="tuike.token" required vali-name="推客机构Token" placeholder="请输入推客机构消息推送对接认证Token（必填）" value="{:sysconf('tuike.token')}" class="layui-input">
+                <p class="help-block">推客机构与系统对接认证Token令牌，请优先填写此参数并保存，然后再在推客机构平台[ 设置 > 开放信息 > 消息推送 ]操作对接。</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>推客机构AesKey</b><br><span class="nowrap color-desc">消息加密密钥</span></label>
+            <div class="layui-input-block">
+                <input name="tuike.encodingaeskey" required vali-name="消息密钥" placeholder="请输入43位推客机构消息推送加密密钥" value="{:sysconf('tuike.encodingaeskey')}" maxlength="43" pattern="^.{43}$" class="layui-input">
+                <p class="help-block">消息加密密钥由43位字符组成，字符范围为A-Z，a-z，0-9必需填写，消息加密密钥必需填写并保持与推客机构一致。</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><b>PushApi</b><br><span class="nowrap color-desc">推客机构消息推送接收</span></label>
+            <div class="layui-input-block">
+                <label class="relative block">
+                    <input value="服务器授权IP：{$geoip}" disabled class="layui-input layui-bg-gray">
+                    <a data-copy="{$geoip}" class="layui-icon layui-icon-release input-right-icon"></a>
+                </label>
+                <label class="relative block margin-top-5">
+                    <input value="消息推送地址：{$NotifyUrl}" disabled class="layui-input layui-bg-gray">
+                    <a data-copy="{$NotifyUrl}" class="layui-icon layui-icon-release input-right-icon"></a>
+                </label>
+                <p class="help-block">推客机构消息推送接口及服务器授权IP地址，需在推客机构[ 设置 > 开放信息 > 消息推送 ]配置。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type="submit">保存配置</button>
+    </div>
+</form>
+</div>
+{/block}
