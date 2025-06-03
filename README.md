@@ -125,8 +125,12 @@ server {
 ```
 
 #### 四、文件夹权限设置
-需要将根目录下的runtime、public/qrcode、public/upload 文件夹的权限设置为777
-
+需要将根目录下的runtime、public/qrcode、public/upload 文件夹的可写权限
+```
+chown -R www:www ./runtime
+chown -R www:www ./public/qrcode
+chown -R www:www ./public/upload
+```
 
 #### 五、运行、推客机构及小程序相关配置
 - 登录帐号admin,密码tk123456
