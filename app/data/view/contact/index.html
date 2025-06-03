@@ -1,0 +1,40 @@
+{extend name="../../admin/view/main"}
+{block name='content'}
+<div class="think-box-shadow">
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class="text-left nowrap">编号</th>
+            <th class="text-left">图标名</th>
+            <th class="text-left">名称</th>
+            <th class="text-left">内容</th>
+            <th class="text-left nowrap">图片</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class="text-left nowrap">{$vo.id}</td>
+            <td class="text-left">{$vo.icon}</td>
+            <td class="text-left">{$vo.title}</td>
+            <td class="text-left">{$vo.content}</td>
+            <td class="text-left">
+                {foreach $vo.imgs as $img}
+                <div style="width: 100px;height: 100px;" data-tips-image data-lazy-src="{$img}"></div>
+                {/foreach}
+            </td>
+            <td class='text-left nowrap'>
+                <!--{if auth("edit")}-->
+                <a class="layui-btn layui-btn-sm" data-modal="{:url('edit')}?id={$vo.id}" data-title="编辑">编 辑</a>
+                <!--{/if}-->
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

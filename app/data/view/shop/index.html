@@ -1,0 +1,49 @@
+{extend name="../../admin/view/main"}
+{block name="button"}
+<!--{if auth("update")}-->
+<button class='layui-btn layui-btn-sm layui-btn-primary' data-queue='{:url("update")}' data-confirm="真的要全量更新店铺吗？">全量更新店铺</button>
+<!--{/if}-->
+{/block}
+{block name='content'}
+<div class="think-box-shadow">
+    {include file='shop/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-sort-td'>
+                <button class="layui-btn layui-btn-xs" data-reload type="button">刷 新</button>
+            </th>
+            <th class="text-left nowrap">编号</th>
+            <th class="text-left nowrap">appid</th>
+            <th class="text-left nowrap">图片</th>
+            <th class="text-left nowrap">名称</th>
+            <th class="text-left nowrap">状态</th>
+            <th class="text-left nowrap">创建时间</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-sort-td'>
+                <label><input class="list-sort-input" data-action-blur="{:request()->url()}" data-loading="false" data-value="id#{$vo.id};action#sort;sort#{value}" value="{$vo.sort}"></label>
+            </td>
+            <td class="text-left nowrap">{$vo.id}</td>
+            <td class="text-left nowrap">{$vo.appid}</td>
+            <td class="text-left">
+                <div style="width: 50px;height: 50px;" data-tips-image data-lazy-src="{$vo.headimg_url|format_img}"></div>
+            </td>
+            <td class="text-left nowrap">{$vo.nickname}</td>
+            <td class="text-left nowrap">正常</td>
+            <td class="text-left nowrap">{$vo.create_at}</td>
+            <td class='text-left nowrap'>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

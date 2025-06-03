@@ -1,0 +1,98 @@
+{extend name="../../admin/view/main"}
+
+{block name="button"}
+<!--{if auth("update")}-->
+<button class='layui-btn layui-btn-sm layui-btn-primary' data-queue="{:url('update')}">更新合作达人</button>
+<!--{/if}-->
+<!--{if auth("feed")}-->
+<button class='layui-btn layui-btn-sm' data-queue='{:url("feed")}'>同步短视频</button>
+<!--{/if}-->
+<!--{if auth("live")}-->
+<button class='layui-btn layui-btn-sm layui-btn-primary' data-queue='{:url("live")}'>同步直播</button>
+<!--{/if}-->
+<!--{if auth("upProduct")}-->
+<button class='layui-btn layui-btn-sm' data-queue='{:url("upProduct")}'>同步直播商品</button>
+<!--{/if}-->
+{/block}
+
+{block name='content'}
+<div class="think-box-shadow">
+    {include file='talent/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <label><input data-auto-none data-check-target='.list-check-box' type='checkbox'></label>
+            </th>
+            <th class='list-table-sort-td'>
+                <button class="layui-btn layui-btn-xs" data-reload type="button">刷 新</button>
+            </th>
+            <th class="text-left nowrap">编号</th>
+            <th class="text-left nowrap">头像</th>
+            <th class="text-left" style="width: 150px;">达人</th>
+            <th class="text-left" style="width: 150px;">备注</th>
+            <th class="text-left" style="width: 150px;">直播间介绍</th>
+            <th class="text-left nowrap">绑定时间</th>
+            <th class="text-left nowrap">合作</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-check-td think-checkbox'>
+                <label><input class="list-check-box" type='checkbox' value='{$vo.talent_appid}'></label>
+            </td>
+            <td class='list-table-sort-td'>
+                <label><input class="list-sort-input" data-action-blur="{:request()->url()}" data-loading="false" data-value="id#{$vo.id};action#sort;sort#{value}" value="{$vo.sort}"></label>
+            </td>
+            <td class="text-left nowrap">{$vo.id}</td>
+            <td class="text-left nowrap">
+                <div class="headimg" style="width: 50px;height: 50px;" data-tips-image data-lazy-src="{$vo.talent_head_img}"></div>
+            </td>
+            <td class="text-left" style="word-break: break-all;">
+                <!--{if $vo.is_shop eq 1}-->
+                「<span class="color-red">店播</span>」
+                <!--{/if}-->
+                {$vo.talent_nickname}<br>
+                <!--{if $vo.is_shop eq 0}-->
+                {$vo.talent_appid}
+                <!--{/if}-->
+            </td>
+            <th class="text-left">
+                <div>{$vo.memo}</div>
+                <!--{if auth("remark")}-->
+                <a data-modal='{:url("remark")}?id={$vo.id}' data-title="管理员备注" data-width="500px" type="button">备注</a>
+                <!--{/if}-->
+            </th>
+            <th class="text-left">
+                <!--{if auth("share")}-->
+                <a data-modal='{:url("share")}?id={$vo.id}' data-title="直播文案" data-width="500px" type="button">文案</a>
+                <!--{/if}-->
+            </th>
+            <td class="text-left nowrap">{$vo.bind_time|format_datetime}</td>
+            <td class="text-left nowrap">
+                <!--{if auth("state")}-->
+                {if $vo.status eq 0}
+                <a class="color-red" data-action="{:url('state')}" data-value="id#{$vo.id};status#1">上架</a>
+                {elseif $vo.status eq 1}
+                <a class="color-blue" data-action="{:url('state')}" data-value="id#{$vo.id};status#0">合作中</a>
+                {/if}
+                 <!--{/if}-->
+            </td>
+            <td class='text-left nowrap'>
+                <a style="margin-right: 10px;" data-menu-node="m-25-26-28" data-open='{:url("feed/index")}?talent_appid={$vo.talent_appid}'>短视频</a>
+                <a style="margin-right: 10px;" data-menu-node="m-25-26-29" data-open='{:url("live/index")}?talent_appid={$vo.talent_appid}'>直播</a>
+                 <!--{if auth("product")}-->
+                 <a style="margin-right: 10px;" data-iframe="{:url('product')}?id={$vo.talent_appid}" data-title="查看商品" data-width="900px">查看商品</a>
+                 <!--{/if}-->
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

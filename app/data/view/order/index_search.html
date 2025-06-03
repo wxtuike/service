@@ -1,0 +1,45 @@
+<fieldset>
+    <legend>条件搜索</legend>
+    <form action="{:request()->url()}" autocomplete="off" class="layui-form layui-form-pane form-search" method="get" onsubmit="return false">
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">订单号</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="order_id" placeholder="请输入订单号" value="{:input('order_id','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">商品名称</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="product_title" placeholder="请输入商品名称" value="{:input('product_title','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">店铺id</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="shop_app_id" placeholder="请输入店铺id" value="{:input('shop_app_id','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">用户id</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="user_id" placeholder="请输入用户id" value="{:input('user_id','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">达人名称</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="talent_nickname" placeholder="请输入达人名称" value="{:input('talent_nickname','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">创建时间</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" data-date-range name="create_time" placeholder="请选择创建时间" value="{:input('create_time','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+        </div>
+    </form>
+</fieldset>
+<script>window.form.render()</script>

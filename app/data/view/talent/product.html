@@ -1,0 +1,33 @@
+{extend name="../../admin/view/full"}
+
+{block name='content'}
+<div class="iframe-pagination">
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class="text-left nowrap">编号</th>
+            <th class="text-left nowrap">图片</th>
+            <th class="text-left nowrap">商品名称</th>
+            <th class="text-left nowrap">金额</th>
+            <th class="text-left nowrap">佣金</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class="text-left nowrap">{$vo.product_id|default=''}</td>
+            <td class="text-left nowrap">
+                <div style="width: 50px;height: 50px;" data-tips-image data-lazy-src="{$vo.product_img_url}"></div>
+            </td>
+            <td class="text-left nowrap">{$vo.product_name|default=''}</td>
+            <td class="text-left nowrap">{$vo.product_price/100}</td>
+            <td class="text-left nowrap">{$vo.predict_commission_amount/100}</td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

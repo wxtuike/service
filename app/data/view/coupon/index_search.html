@@ -1,0 +1,23 @@
+<fieldset>
+    <legend>条件搜索</legend>
+    <form action="{:request()->url()}" autocomplete="off" class="layui-form layui-form-pane form-search" method="get" onsubmit="return false">
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">商品ID</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="product_ids" placeholder="请输入商品ID" value="{:input('product_ids','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">店铺appid</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="shop_appid" placeholder="请输入店铺appid" value="{:input('shop_appid','')}">
+            </label>
+        </div>
+
+        <div class="layui-form-item layui-inline">
+            <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+        </div>
+    </form>
+
+</fieldset>
+<script>window.form.render()</script>

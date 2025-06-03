@@ -1,0 +1,50 @@
+<fieldset>
+    <legend>条件搜索</legend>
+    <form action="{:request()->url()}" autocomplete="off" class="layui-form layui-form-pane form-search" method="get" onsubmit="return false">
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">CODE</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="code" placeholder="请输入用户Code" value="{:input('code','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">手机号</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="mobile" placeholder="请输入手机号" value="{:input('mobile','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">昵称</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" name="nickname" placeholder="请输入昵称" value="{:input('nickname','')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">身份</label>
+            <div class="layui-input-inline">
+                <select class="layui-select" name="role_id">
+                    <option value=''>-- 全部 --</option>
+                    {foreach ['未授权', '推客', 'VIP'] as $k=>$v}
+                    {if $k.'' eq input('role_id')}
+                    <option selected value="{$k}">{$v}</option>
+                    {else}
+                    <option value="{$k}">{$v}</option>
+                    {/if}{/foreach}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">注册时间</label>
+            <label class="layui-input-inline">
+                <input class="layui-input" data-date-range name="create_at" placeholder="请选择创建时间" value="{:input('create_at','')}">
+            </label>
+        </div>
+
+        <div class="layui-form-item layui-inline">
+            <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+        </div>
+    </form>
+
+</fieldset>
+<script>window.form.render()</script>

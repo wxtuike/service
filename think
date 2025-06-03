@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+use think\admin\service\RuntimeService;
+
+// 加载基础文件
+require __DIR__ . '/vendor/autoload.php';
+
+// 命令行应用初始化
+RuntimeService::doConsoleInit();

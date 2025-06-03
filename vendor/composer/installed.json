@@ -1,0 +1,1312 @@
+{
+    "packages": [
+        {
+            "name": "bacon/bacon-qr-code",
+            "version": "2.0.8",
+            "version_normalized": "2.0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Bacon/BaconQrCode.git",
+                "reference": "8674e51bb65af933a5ffaf1c308a660387c35c22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/8674e51bb65af933a5ffaf1c308a660387c35c22",
+                "reference": "8674e51bb65af933a5ffaf1c308a660387c35c22",
+                "shasum": ""
+            },
+            "require": {
+                "dasprid/enum": "^1.0.3",
+                "ext-iconv": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "phly/keep-a-changelog": "^2.1",
+                "phpunit/phpunit": "^7 | ^8 | ^9",
+                "spatie/phpunit-snapshot-assertions": "^4.2.9",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "suggest": {
+                "ext-imagick": "to generate QR code images"
+            },
+            "time": "2022-12-07T17:46:57+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "BaconQrCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Scholzen 'DASPRiD'",
+                    "email": "mail@dasprids.de",
+                    "homepage": "https://dasprids.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "BaconQrCode is a QR code generator for PHP.",
+            "homepage": "https://github.com/Bacon/BaconQrCode",
+            "support": {
+                "issues": "https://github.com/Bacon/BaconQrCode/issues",
+                "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.8"
+            },
+            "install-path": "../bacon/bacon-qr-code"
+        },
+        {
+            "name": "dasprid/enum",
+            "version": "1.0.6",
+            "version_normalized": "1.0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DASPRiD/Enum.git",
+                "reference": "8dfd07c6d2cf31c8da90c53b83c026c7696dda90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/8dfd07c6d2cf31c8da90c53b83c026c7696dda90",
+                "reference": "8dfd07c6d2cf31c8da90c53b83c026c7696dda90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1 <9.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7 || ^8 || ^9 || ^10 || ^11",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "time": "2024-08-09T14:30:48+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "DASPRiD\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Scholzen 'DASPRiD'",
+                    "email": "mail@dasprids.de",
+                    "homepage": "https://dasprids.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP 7.1 enum implementation",
+            "keywords": [
+                "enum",
+                "map"
+            ],
+            "support": {
+                "issues": "https://github.com/DASPRiD/Enum/issues",
+                "source": "https://github.com/DASPRiD/Enum/tree/1.0.6"
+            },
+            "install-path": "../dasprid/enum"
+        },
+        {
+            "name": "psr/container",
+            "version": "1.1.2",
+            "version_normalized": "1.1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/513e0666f7216c7459170d56df27dfcefe1689ea",
+                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "time": "2021-11-05T16:50:12+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/1.1.2"
+            },
+            "install-path": "../psr/container"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.1",
+            "version_normalized": "1.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "time": "2023-04-04T09:50:52+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/1.1"
+            },
+            "install-path": "../psr/http-message"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.1.4",
+            "version_normalized": "1.1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2021-05-03T11:20:27+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
+            "install-path": "../psr/log"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2017-10-23T01:57:42+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/simple-cache/tree/master"
+            },
+            "install-path": "../psr/simple-cache"
+        },
+        {
+            "name": "symfony/polyfill-php80",
+            "version": "v1.31.0",
+            "version_normalized": "1.31.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php80.git",
+                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "time": "2024-09-09T11:45:10+00:00",
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ion Bazan",
+                    "email": "ion.bazan@gmail.com"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.31.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "../symfony/polyfill-php80"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v5.4.47",
+            "version_normalized": "5.4.47.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "5d1662fb32ebc94f17ddb8d635454a776066733d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/5d1662fb32ebc94f17ddb8d635454a776066733d",
+                "reference": "5d1662fb32ebc94f17ddb8d635454a776066733d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.16"
+            },
+            "time": "2024-11-06T11:36:42+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v5.4.47"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "../symfony/process"
+        },
+        {
+            "name": "topthink/framework",
+            "version": "v6.1.5",
+            "version_normalized": "6.1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/framework.git",
+                "reference": "57d1950a1844ef8d3098ea290032aeb92e2e32c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/57d1950a1844ef8d3098ea290032aeb92e2e32c3",
+                "reference": "57d1950a1844ef8d3098ea290032aeb92e2e32c3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.2.5",
+                "psr/container": "~1.0",
+                "psr/http-message": "^1.0",
+                "psr/log": "~1.0",
+                "psr/simple-cache": "^1.0",
+                "topthink/think-helper": "^3.1.1",
+                "topthink/think-orm": "^2.0|^3.0"
+            },
+            "require-dev": {
+                "guzzlehttp/psr7": "^2.1.0",
+                "mikey179/vfsstream": "^1.6",
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^7.0"
+            },
+            "time": "2024-04-16T02:01:19+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [],
+                "psr-4": {
+                    "think\\": "src/think/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                },
+                {
+                    "name": "yunwuxin",
+                    "email": "448901948@qq.com"
+                }
+            ],
+            "description": "The ThinkPHP Framework.",
+            "homepage": "http://thinkphp.cn/",
+            "keywords": [
+                "framework",
+                "orm",
+                "thinkphp"
+            ],
+            "support": {
+                "issues": "https://github.com/top-think/framework/issues",
+                "source": "https://github.com/top-think/framework/tree/v6.1.5"
+            },
+            "install-path": "../topthink/framework"
+        },
+        {
+            "name": "topthink/think-helper",
+            "version": "v3.1.11",
+            "version_normalized": "3.1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-helper.git",
+                "reference": "1d6ada9b9f3130046bf6922fe1bd159c8d88a33c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/think-helper/zipball/1d6ada9b9f3130046bf6922fe1bd159c8d88a33c",
+                "reference": "1d6ada9b9f3130046bf6922fe1bd159c8d88a33c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "time": "2025-04-07T06:55:59+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helper.php"
+                ],
+                "psr-4": {
+                    "think\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "yunwuxin",
+                    "email": "448901948@qq.com"
+                }
+            ],
+            "description": "The ThinkPHP6 Helper Package",
+            "support": {
+                "issues": "https://github.com/top-think/think-helper/issues",
+                "source": "https://github.com/top-think/think-helper/tree/v3.1.11"
+            },
+            "install-path": "../topthink/think-helper"
+        },
+        {
+            "name": "topthink/think-migration",
+            "version": "v3.1.1",
+            "version_normalized": "3.1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-migration.git",
+                "reference": "22c44058e1454f3af1d346e7f6524fbe654de7fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/think-migration/zipball/22c44058e1454f3af1d346e7f6524fbe654de7fb",
+                "reference": "22c44058e1454f3af1d346e7f6524fbe654de7fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "topthink/framework": "^6.0 || ^8.0",
+                "topthink/think-helper": "^3.0.3"
+            },
+            "require-dev": {
+                "composer/composer": "^2.5.8",
+                "fzaninotto/faker": "^1.8",
+                "robmorgan/phinx": "^0.13.4"
+            },
+            "suggest": {
+                "fzaninotto/faker": "Required to use the factory builder (^1.8)."
+            },
+            "time": "2023-09-14T05:51:31+00:00",
+            "type": "library",
+            "extra": {
+                "think": {
+                    "services": [
+                        "think\\migration\\Service"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Phinx\\": "phinx",
+                    "think\\migration\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "yunwuxin",
+                    "email": "448901948@qq.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/top-think/think-migration/issues",
+                "source": "https://github.com/top-think/think-migration/tree/v3.1.1"
+            },
+            "install-path": "../topthink/think-migration"
+        },
+        {
+            "name": "topthink/think-orm",
+            "version": "v2.0.62",
+            "version_normalized": "2.0.62.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-orm.git",
+                "reference": "e53bfea572a133039ad687077120de5521af617f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/think-orm/zipball/e53bfea572a133039ad687077120de5521af617f",
+                "reference": "e53bfea572a133039ad687077120de5521af617f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "php": ">=7.1.0",
+                "psr/log": "^1.0|^2.0",
+                "psr/simple-cache": "^1.0|^2.0",
+                "topthink/think-helper": "^3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7|^8|^9.5"
+            },
+            "time": "2024-09-22T06:17:47+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "stubs/load_stubs.php"
+                ],
+                "psr-4": {
+                    "think\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                }
+            ],
+            "description": "think orm",
+            "keywords": [
+                "database",
+                "orm"
+            ],
+            "support": {
+                "issues": "https://github.com/top-think/think-orm/issues",
+                "source": "https://github.com/top-think/think-orm/tree/v2.0.62"
+            },
+            "install-path": "../topthink/think-orm"
+        },
+        {
+            "name": "topthink/think-template",
+            "version": "v2.0.10",
+            "version_normalized": "2.0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-template.git",
+                "reference": "2b28c9f787c94f6c22312c9fe97dd3d926c03e1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/think-template/zipball/2b28c9f787c94f6c22312c9fe97dd3d926c03e1c",
+                "reference": "2b28c9f787c94f6c22312c9fe97dd3d926c03e1c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "time": "2024-08-12T05:48:57+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "think\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                }
+            ],
+            "description": "the php template engine",
+            "support": {
+                "issues": "https://github.com/top-think/think-template/issues",
+                "source": "https://github.com/top-think/think-template/tree/v2.0.10"
+            },
+            "install-path": "../topthink/think-template"
+        },
+        {
+            "name": "topthink/think-view",
+            "version": "v1.0.14",
+            "version_normalized": "1.0.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-view.git",
+                "reference": "edce0ae2c9551ab65f9e94a222604b0dead3576d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/think-view/zipball/edce0ae2c9551ab65f9e94a222604b0dead3576d",
+                "reference": "edce0ae2c9551ab65f9e94a222604b0dead3576d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "topthink/think-template": "^2.0"
+            },
+            "time": "2019-11-06T11:40:13+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "think\\view\\driver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                }
+            ],
+            "description": "thinkphp template driver",
+            "support": {
+                "issues": "https://github.com/top-think/think-view/issues",
+                "source": "https://github.com/top-think/think-view/tree/v1.0.14"
+            },
+            "install-path": "../topthink/think-view"
+        },
+        {
+            "name": "zoujingli/ip2region",
+            "version": "v2.0.6",
+            "version_normalized": "2.0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/ip2region.git",
+                "reference": "66895178be204521e9f5ae9df0ea502893ee53b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/ip2region/zipball/66895178be204521e9f5ae9df0ea502893ee53b2",
+                "reference": "66895178be204521e9f5ae9df0ea502893ee53b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "time": "2024-08-02T01:01:01+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "Ip2Region.php",
+                    "XdbSearcher.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com",
+                    "homepage": "https://thinkadmin.top"
+                }
+            ],
+            "description": "Ip2Region for PHP",
+            "homepage": "https://github.com/zoujingli/Ip2Region",
+            "keywords": [
+                "Ip2Region"
+            ],
+            "support": {
+                "issues": "https://github.com/zoujingli/ip2region/issues",
+                "source": "https://github.com/zoujingli/ip2region/tree/v2.0.6"
+            },
+            "install-path": "../zoujingli/ip2region"
+        },
+        {
+            "name": "zoujingli/qrcode",
+            "version": "v1.0.3",
+            "version_normalized": "1.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/qrcode.git",
+                "reference": "de006cd5994e3fecf6f25f4f6705957ac79998f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/qrcode/zipball/de006cd5994e3fecf6f25f4f6705957ac79998f0",
+                "reference": "de006cd5994e3fecf6f25f4f6705957ac79998f0",
+                "shasum": ""
+            },
+            "require": {
+                "bacon/bacon-qr-code": "^2.0.5",
+                "php": "^7.1|^8.0"
+            },
+            "time": "2023-09-14T15:41:43+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Endroid\\QrCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen van den Enden",
+                    "email": "info@endroid.nl"
+                },
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com"
+                }
+            ],
+            "description": "Endroid QrCode for ThinkAdmin",
+            "homepage": "https://github.com/zoujingli/qrcode",
+            "keywords": [
+                "endroid",
+                "qrcode"
+            ],
+            "support": {
+                "issues": "https://github.com/zoujingli/qrcode/issues",
+                "source": "https://github.com/zoujingli/qrcode/tree/v1.0.3"
+            },
+            "install-path": "../zoujingli/qrcode"
+        },
+        {
+            "name": "zoujingli/think-install",
+            "version": "v1.0.49",
+            "version_normalized": "1.0.49.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/think-install.git",
+                "reference": "3b8f2eb4fd1275cecdebe8d39d530bb4071d7421"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/think-install/zipball/3b8f2eb4fd1275cecdebe8d39d530bb4071d7421",
+                "reference": "3b8f2eb4fd1275cecdebe8d39d530bb4071d7421",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0 || *",
+                "ext-json": "*",
+                "php": ">=7.1",
+                "symfony/process": "^5.4 || ^6.0 || *"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0 || ^2.0"
+            },
+            "time": "2025-01-07T00:25:14+00:00",
+            "type": "composer-plugin",
+            "extra": {
+                "class": [
+                    "think\\admin\\install\\Service"
+                ]
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "think\\admin\\install\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com"
+                }
+            ],
+            "description": "Plugin Installer for ThinkAdmin",
+            "homepage": "https://thinkadmin.top",
+            "support": {
+                "issues": "https://github.com/zoujingli/think-install/issues",
+                "source": "https://github.com/zoujingli/think-install/tree/v1.0.49"
+            },
+            "install-path": "../zoujingli/think-install"
+        },
+        {
+            "name": "zoujingli/think-library",
+            "version": "v6.1.86",
+            "version_normalized": "6.1.86.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/ThinkLibrary.git",
+                "reference": "971fb35b01b40e89ae1fac1a75acea444e831aa9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/ThinkLibrary/zipball/971fb35b01b40e89ae1fac1a75acea444e831aa9",
+                "reference": "971fb35b01b40e89ae1fac1a75acea444e831aa9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-zlib": "*",
+                "php": ">=7.1",
+                "symfony/process": "^5.4|^6.0|*",
+                "topthink/framework": "^6.0|^8.0|*",
+                "topthink/think-migration": "^3.0|*",
+                "topthink/think-orm": "^2.0|^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "time": "2025-04-11T15:09:14+00:00",
+            "type": "library",
+            "extra": {
+                "think": {
+                    "services": [
+                        "think\\admin\\Library"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/common.php"
+                ],
+                "psr-4": {
+                    "think\\admin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com"
+                }
+            ],
+            "description": "Library for ThinkAdmin",
+            "homepage": "https://thinkadmin.top",
+            "support": {
+                "email": "zoujingli@qq.com",
+                "forum": "https://thinkadmin.top",
+                "issues": "https://gitee.com/zoujingli/ThinkLibrary/issues",
+                "source": "https://gitee.com/zoujingli/ThinkLibrary",
+                "wiki": "https://thinkadmin.top"
+            },
+            "install-path": "../zoujingli/think-library"
+        },
+        {
+            "name": "zoujingli/think-plugs-admin",
+            "version": "v1.0.70",
+            "version_normalized": "1.0.70.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/think-plugs-admin.git",
+                "reference": "a97319c2dff0cee56ca1b7a13aa36d13230d78e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/think-plugs-admin/zipball/a97319c2dff0cee56ca1b7a13aa36d13230d78e3",
+                "reference": "a97319c2dff0cee56ca1b7a13aa36d13230d78e3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">7.1",
+                "topthink/framework": "^6.0|^8.0",
+                "topthink/think-view": "^1.0|^2.0",
+                "zoujingli/ip2region": "^1.0|^2.0|@dev",
+                "zoujingli/think-install": "^1.0|@dev",
+                "zoujingli/think-library": "^6.1|@dev",
+                "zoujingli/think-plugs-static": "^1.0|@dev"
+            },
+            "time": "2025-03-25T07:14:10+00:00",
+            "type": "think-admin-plugin",
+            "extra": {
+                "think": {
+                    "services": [
+                        "app\\admin\\Service"
+                    ]
+                },
+                "config": {
+                    "name": "系统后台管理",
+                    "type": "module",
+                    "document": "https://thinkadmin.top/plugin/think-plugs-admin.html",
+                    "description": "后台基础管理模块，系统账号及安全配置管理。"
+                },
+                "plugin": {
+                    "copy": {
+                        "src": "!app/admin",
+                        "stc/database": "database/migrations"
+                    },
+                    "clear": true
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "app\\admin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com"
+                }
+            ],
+            "description": "Admin Plugin for ThinkAdmin",
+            "homepage": "https://thinkadmin.top",
+            "support": {
+                "issues": "https://github.com/zoujingli/think-plugs-admin/issues",
+                "source": "https://github.com/zoujingli/think-plugs-admin/tree/v1.0.70"
+            },
+            "install-path": "../zoujingli/think-plugs-admin"
+        },
+        {
+            "name": "zoujingli/think-plugs-static",
+            "version": "v1.0.127",
+            "version_normalized": "1.0.127.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/think-plugs-static.git",
+                "reference": "a966d1ffd3ccfa08776314cae5e555f3b13ff7c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/think-plugs-static/zipball/a966d1ffd3ccfa08776314cae5e555f3b13ff7c0",
+                "reference": "a966d1ffd3ccfa08776314cae5e555f3b13ff7c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "zoujingli/think-install": "^1.0||dev-master"
+            },
+            "time": "2025-04-09T16:22:20+00:00",
+            "type": "think-admin-plugin",
+            "extra": {
+                "plugin": {
+                    "copy": {
+                        "stc/think": "!think",
+                        "stc/public/index.php": "!public/index.php",
+                        "stc/public/static/plugs": "!public/static/plugs",
+                        "stc/public/static/theme": "!public/static/theme",
+                        "stc/public/static/admin.js": "!public/static/admin.js",
+                        "stc/public/static/login.js": "!public/static/login.js"
+                    },
+                    "init": {
+                        "stc/.env.example": ".env.example",
+                        "stc/config/app.php": "config/app.php",
+                        "stc/config/log.php": "config/log.php",
+                        "stc/class/Index.php": "app/index/controller/Index.php",
+                        "stc/config/lang.php": "config/lang.php",
+                        "stc/config/view.php": "config/view.php",
+                        "stc/config/cache.php": "config/cache.php",
+                        "stc/config/phinx.php": "config/phinx.php",
+                        "stc/config/route.php": "config/route.php",
+                        "stc/public/.htaccess": "public/.htaccess",
+                        "stc/config/cookie.php": "config/cookie.php",
+                        "stc/public/robots.txt": "public/robots.txt",
+                        "stc/public/router.php": "public/router.php",
+                        "stc/config/session.php": "config/session.php",
+                        "stc/config/database.php": "config/database.php",
+                        "stc/public/static/extra/script.js": "public/static/extra/script.js",
+                        "stc/public/static/extra/style.css": "public/static/extra/style.css"
+                    },
+                    "clear": true
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com"
+                }
+            ],
+            "description": "Static Files for ThinkAdmin",
+            "support": {
+                "issues": "https://github.com/zoujingli/think-plugs-static/issues",
+                "source": "https://github.com/zoujingli/think-plugs-static/tree/v1.0.127"
+            },
+            "install-path": "../zoujingli/think-plugs-static"
+        },
+        {
+            "name": "zoujingli/think-plugs-wechat",
+            "version": "v1.0.46",
+            "version_normalized": "1.0.46.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/think-plugs-wechat.git",
+                "reference": "be138ecc3d0d61683f35a33a937ba1da5c983070"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/think-plugs-wechat/zipball/be138ecc3d0d61683f35a33a937ba1da5c983070",
+                "reference": "be138ecc3d0d61683f35a33a937ba1da5c983070",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": ">7.1",
+                "zoujingli/qrcode": "^1.0|@dev",
+                "zoujingli/think-install": "^1.0|@dev",
+                "zoujingli/think-library": "^6.1|@dev",
+                "zoujingli/wechat-developer": "^1.2|@dev"
+            },
+            "time": "2025-03-20T08:58:54+00:00",
+            "type": "think-admin-plugin",
+            "extra": {
+                "think": {
+                    "services": [
+                        "app\\wechat\\Service"
+                    ]
+                },
+                "config": {
+                    "name": "微信平台管理",
+                    "type": "module",
+                    "document": "https://thinkadmin.top/plugin/think-plugs-wechat.html",
+                    "description": "后台微信对接模块，功能全面的微信基础管理。"
+                },
+                "plugin": {
+                    "copy": {
+                        "src": "!app/wechat",
+                        "stc/database": "database/migrations"
+                    },
+                    "clear": true
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "app\\wechat\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com"
+                }
+            ],
+            "description": "WeChat Plugin for ThinkAdmin",
+            "homepage": "https://thinkadmin.top",
+            "support": {
+                "issues": "https://github.com/zoujingli/think-plugs-wechat/issues",
+                "source": "https://github.com/zoujingli/think-plugs-wechat/tree/v1.0.46"
+            },
+            "install-path": "../zoujingli/think-plugs-wechat"
+        },
+        {
+            "name": "zoujingli/wechat-developer",
+            "version": "v1.2.74",
+            "version_normalized": "1.2.74.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoujingli/WeChatDeveloper.git",
+                "reference": "59ca0950728713120ac447c764cbb2938ab9ccc6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoujingli/WeChatDeveloper/zipball/59ca0950728713120ac447c764cbb2938ab9ccc6",
+                "reference": "59ca0950728713120ac447c764cbb2938ab9ccc6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "php": ">=5.4"
+            },
+            "time": "2025-04-21T15:06:41+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "helper.php"
+                ],
+                "psr-4": {
+                    "WePay\\": "WePay",
+                    "AliPay\\": "AliPay",
+                    "WeChat\\": "WeChat",
+                    "WeMini\\": "WeMini",
+                    "WePayV3\\": "WePayV3"
+                },
+                "classmap": [
+                    "We.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anyon",
+                    "email": "zoujingli@qq.com",
+                    "homepage": "https://thinkadmin.top"
+                }
+            ],
+            "description": "WeChat and Alipay Platform Development",
+            "homepage": "https://thinkadmin.top",
+            "keywords": [
+                "WeChatDeveloper",
+                "WeMini",
+                "alipay",
+                "wechat",
+                "wechatpay"
+            ],
+            "support": {
+                "issues": "https://github.com/zoujingli/WeChatDeveloper/issues",
+                "source": "https://github.com/zoujingli/WeChatDeveloper/tree/v1.2.74"
+            },
+            "install-path": "../zoujingli/wechat-developer"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

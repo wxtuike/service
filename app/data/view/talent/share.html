@@ -1,0 +1,13 @@
+<form action="{:request()->url()}" autocomplete="off" class="layui-form layui-card" data-auto="true" method="post">
+    <div class="layui-card-body">
+        <div class="layui-form-item layui-inline">
+            <textarea style="margin-left: 20px;" placeholder="请输入直播文案" rows="3" cols="100" class="layui-textarea" name="share">{$order.share_text|default=""}</textarea>
+        </div>
+        <input type='hidden' value='{$order.id}' name='id'/>
+        <div class="layui-form-item text-center">
+            <button class="layui-btn" type='submit'>确定</button>
+            <button class="layui-btn layui-btn-danger" data-close data-confirm="确定要取消吗？" type='button'>取消</button>
+        </div>
+    </div>
+    <script>form.render()</script>
+</form>

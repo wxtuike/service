@@ -1,0 +1,29 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body padding-left-40">
+        <label class="layui-form-item relative block">
+            <span class="color-green font-w7">图标(tdesign图标)</span>
+            <input type="text" name="icon" value='{$vo.icon|default=""}' required placeholder="图标" class="layui-input">
+        </label>
+        <label class="layui-form-item relative block">
+            <span class="color-green font-w7">名称</span>
+            <input type="text" name="title" value='{$vo.title|default=""}' required placeholder="名称" class="layui-input">
+        </label>
+        <label class="layui-form-item relative block">
+            <span class="color-green font-w7">内容</span>
+            <input type="text" name="content" value='{$vo.content|default=""}' required placeholder="内容" class="layui-input">
+        </label>
+        <div class="layui-form-item relative block">
+            <span class="color-green font-w7" style="float: left;">请上传联系二维码(多个在前端随机显示)</span>
+            <div class="layui-col-xs2 text-center">
+                <input type="hidden" name="imgs" required value="{$vo.imgs|default=''}">
+                <script>$('[name=imgs]').uploadMultipleImage()</script>
+            </div>
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消吗？" data-close>取消</button>
+    </div>
+</form>

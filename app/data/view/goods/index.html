@@ -1,0 +1,73 @@
+{extend name="../../admin/view/main"}
+{block name="button"}
+<!--{if auth("sync")}-->
+<button data-queue="{:url('sync')}" class='layui-btn layui-btn-sm layui-btn-primary'>同步商品</button>
+<!--{/if}-->
+<!--{if auth("state")}-->
+<a data-confirm="确定要下架吗？" data-action="{:url('state')}" data-rule="id#{key};status#0" class='layui-btn layui-btn-sm layui-btn-primary'>批量下架</a>
+<!--{/if}-->
+<!--{if auth("state")}-->
+<a data-confirm="确定要上架吗？" data-action="{:url('state')}" data-rule="id#{key};status#1" class='layui-btn layui-btn-sm layui-btn-primary'>批量上架</a>
+<!--{/if}-->
+{/block}
+{block name='content'}
+<div class="think-box-shadow">
+    {include file='goods/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <label><input data-auto-none data-check-target='.list-check-box' type='checkbox'></label>
+            </th>
+            <th class='list-table-sort-td'>
+                <button class="layui-btn layui-btn-xs" data-reload type="button">刷 新</button>
+            </th>
+            <th class="text-left nowrap">编号</th>
+            <th class="text-left">商品ID</th>
+            <th class="text-left nowrap">图片</th>
+            <th class="text-left" style="width: 100px;">名称</th>
+            <th class="text-left nowrap">价格</th>
+            <th class="text-left nowrap">佣金</th>
+            <th class="text-left nowrap">状态</th>
+            <th class="text-left nowrap">创建时间</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-check-td think-checkbox'>
+                <label><input class="list-check-box" value='{$vo.id}' type='checkbox'></label>
+            </td>
+            <td class='list-table-sort-td'>
+                <label><input class="list-sort-input" data-action-blur="{:request()->url()}" data-loading="false" data-value="id#{$vo.id};action#sort;sort#{value}" value="{$vo.sort}"></label>
+            </td>
+            <td class="text-left nowrap">{$vo.id}</td>
+            <td class="text-left nowrap">{$vo.product_id}<br>{$vo.shop_appid}</td>
+            <td class="text-left">
+                <div style="width: 50px;height: 50px;" data-tips-image data-lazy-src="{$vo.thumb}"></div>
+            </td>
+            <td class="text-left">{$vo.title}</td>
+            <td class="text-left nowrap">{$vo.price/100}</td>
+            <td class="text-left nowrap">{$vo.commission/100}/<span class="color-red">{$vo.commission_rate*100}%</span></td>
+            <td class="text-left nowrap">
+                <!--{if auth("state")}-->
+                {if $vo.status eq 0}
+                <a class="color-red" data-action="{:url('state')}" data-value="id#{$vo.id};status#1">已下架</a>
+                {elseif $vo.status eq 1}
+                <a class="color-blue" data-action="{:url('state')}" data-value="id#{$vo.id};status#0">销售中</a>
+                {/if}
+                 <!--{/if}-->
+            </td>
+            <td class="text-left nowrap">{$vo.create_at}</td>
+            <td class='text-left nowrap'>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

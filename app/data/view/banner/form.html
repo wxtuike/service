@@ -1,0 +1,21 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body padding-left-40">
+        <label class="layui-form-item relative block">
+            <span class="color-green font-w7">商品ID</span>
+            <input type="text" name="product_id" value='{$vo.product_id|default=""}' required placeholder="商品ID" class="layui-input">
+        </label>
+        <div class="layui-form-item relative block">
+            <span class="color-green font-w7" style="float: left;">请上传图片</span>
+            <div class="layui-col-xs2 text-center">
+                <input type="hidden" name="img" required value="{$vo.img|default=''}">
+                <script>$('[name=img]').uploadOneImage()</script>
+            </div>
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消吗？" data-close>取消</button>
+    </div>
+</form>

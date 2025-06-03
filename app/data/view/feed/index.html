@@ -1,0 +1,64 @@
+{extend name="../../admin/view/main"}
+{block name="button"}
+<!--{if auth("talent/feed")}-->
+<button class='layui-btn layui-btn-sm layui-btn-primary' data-queue='{:url("talent/feed")}'>同步数据</button>
+<!--{/if}-->
+{/block}
+{block name='content'}
+<div class="think-box-shadow">
+    {include file='feed/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-sort-td'>
+                <button class="layui-btn layui-btn-xs" data-reload type="button">刷 新</button>
+            </th>
+            <th class="text-left nowrap">编号</th>
+            <th class="text-left">达人名</th>
+            <th class="text-left nowrap">图片</th>
+            <th class="text-left nowrap">名称</th>
+            <th class="text-left nowrap">状态</th>
+            <th class="text-left nowrap">创建时间</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-sort-td'>
+                <label><input class="list-sort-input" data-action-blur="{:request()->url()}" data-loading="false" data-value="id#{$vo.id};action#sort;sort#{value}" value="{$vo.sort}"></label>
+            </td>
+            <td class="text-left nowrap">{$vo.id}</td>
+            <td class="text-left" style="word-break: break-all;">
+                <div>{$vo.talent_nickname}</div>
+                <div>{$vo.talent_appid}</div>
+            </td>
+            <td class="text-left nowrap">
+                <div style="width: 100px;height: 100px;" data-tips-image data-lazy-src="{$vo.product_img_url|default=''}"></div>
+            </td>
+            <td class="text-left nowrap">
+                <span>{$vo.product_name}</span>
+                <div>价格：{$vo.product_mini_price}</div>
+                <div>佣金：{$vo.commission_amount}</div>
+            </td>
+            <td class="text-left nowrap">{if $vo.status eq 0}<span class="color-red">下架</span>{elseif $vo.status eq 1}<span class="color-green">推广中</span>{/if}</td>
+            <td class="text-left nowrap">{$vo.create_at}</td>
+            <td class='text-left nowrap'>
+
+                <!--{if auth("state") and $vo.status eq 1}-->
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('state')}" data-value="id#{$vo.id};status#0">下 架</a>
+                <!--{/if}-->
+
+                <!--{if auth("state") and $vo.status eq 0}-->
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('state')}" data-value="id#{$vo.id};status#1">推 广</a>
+                <!--{/if}-->
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

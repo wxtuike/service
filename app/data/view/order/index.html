@@ -1,0 +1,64 @@
+{extend name="../../admin/view/main"}
+{block name="button"}
+<!--{if auth("goods/syncOrder")}-->
+<button data-queue="{:url('goods/syncOrder')}" class='layui-btn layui-btn-sm'>同步订单</button>
+<!--{/if}-->
+{/block}
+{block name='content'}
+<div class="layui-tab layui-tab-card">
+    <ul class="layui-tab-title notselect">
+        {php}$types = ['ta' => '全部订单','t0'=>'待结算','t1'=>'已结算','t2'=>'取消'];{/php}
+        {foreach $types as $k=>$v}{if isset($type) and 't'.$type eq $k}
+        <li class="layui-this" data-open="{:url('index')}?type={$k}">{$v}</li>
+        {else}
+        <li data-open="{:url('index')}?type={$k}">{$v}</li>
+        {/if}{/foreach}
+    </ul>
+    <div class="layui-tab-content">
+    {include file='order/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class="text-left">订单号</th>
+            <th class="text-left">信息</th>
+            <th class="text-left nowrap">图片</th>
+            <th class="text-left" style="width: 100px;">名称</th>
+            <th class="text-left nowrap">价格</th>
+            <th class="text-left nowrap">佣金</th>
+            <th class="text-left nowrap">状态</th>
+            <th class="text-left nowrap">创建时间</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class="text-left">{$vo.order_id}</td>
+            <td class="text-left">
+                用户ID:{$vo.user_id}<br>
+                商品ID:{$vo.product_id}<br>
+                店铺ID：{$vo.shop_app_id}<br>
+                 <!--{if $vo.talent_nickname}-->
+                达人：{$vo.talent_nickname}
+                <!--{/if}-->
+            </td>
+            <td class="text-left">
+                <div style="width: 50px;height: 50px;" data-tips-image data-lazy-src="{$vo.product_img}"></div>
+            </td>
+            <td class="text-left">{$vo.product_title}</td>
+            <td class="text-left nowrap">{$vo.amount/100}</td>
+            <td class="text-left nowrap">{$vo.service_amount/100}</td>
+            <td class="text-left nowrap">{$vo.status|orderStatusName}</td>
+            <td class="text-left nowrap">{$vo.create_time}</td>
+            <td class='text-left nowrap'>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+</div>
+{/block}
