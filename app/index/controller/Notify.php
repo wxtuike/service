@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace app\wechat\controller\api;
+namespace app\index\controller;
 
 use app\common\service\ApiOrderService;
 use app\common\service\GoodsService;
@@ -12,7 +12,7 @@ use think\admin\Controller;
 /**
  * 微信推客回调通知处理
  * @class Notify
- * @package app\wechat\controller\api
+ * @package app\index\controller
  */
 class Notify extends Controller
 {
