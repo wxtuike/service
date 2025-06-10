@@ -32,8 +32,8 @@ class WeappService extends Service
     public function getOpenId($code)
     {
         $config = [
-            'appid' => sysconf('weapp.appid'), // 'wx6a53c9538e0c5734',
-            'appsecret' => sysconf('weapp.appsecret'), //'c0a9ecbfc9fa6acfa8dd4071e742df9c'
+            'appid' => sysconf('weapp.appid'),
+            'appsecret' => sysconf('weapp.appsecret'),
         ];
         $wxamp = new \WeMini\Crypt($config);
         $result = $wxamp->session($code);
