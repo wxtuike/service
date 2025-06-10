@@ -51,8 +51,8 @@ class WeappService extends Service
             return true;
         }
         $config = [
-            'appid' => config('weapp.appid'),
-            'appsecret' => config('weapp.appsecret'),
+            'appid' => sysconf('weapp.appid'),
+            'appsecret' => sysconf('weapp.appsecret'),
         ];
         $wxamp = new \WeMini\Qrcode($config);
         $res = $wxamp->createMiniScene('mid=' . $code);
