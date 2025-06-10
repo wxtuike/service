@@ -10,7 +10,7 @@ class Decrypt
     protected $Token = '';
     protected $Key = '';
 
-    protected function __construct()
+    function __construct()
     {
         $this->Token = sysconf('tuike.token');
         $this->Key = sysconf('tuike.encodingaeskey');
