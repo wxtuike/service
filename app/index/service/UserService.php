@@ -422,7 +422,12 @@ class UserService extends Service
     private function getToken($userId)
     {
         $table = 'tk_user_token';
-        $token = ApiCheck::getToken($userId);
+        $old = Db::table($table)->where('user_id', $userId)->find();
+        if (empty($old)) {
+            $token = ApiCheck::getToken($userId);
+        } else {
+            $token = $old['token'];
+        }
         $redisObj = RedisDb::getInstance()->setPrefix(RedisCode::USER_TOKEN_PREFIX);
         $redisObj->add($token, $userId, RedisCode::USER_TOKEN_EXPIRE);
         $data = [
@@ -430,7 +435,6 @@ class UserService extends Service
             'token' => $token,
             'create_time' => TIMESTAMP
         ];
-        $old = Db::table($table)->where('user_id', $userId)->find();
         if (empty($old)) {
             Db::table($table)->insert($data);
         } else {
