@@ -137,7 +137,7 @@ chown -R www:www ./public/upload
 - 登录成功后，进入 系统管理-> 微信管理 -> 推客接口配置，按提示完成推客联盟机构及小程序相关配置。
 
 #### 六、启动计划任务
-- 新版本的任务执行依赖于 symfony/process 组件。为了正常运行，您的运行环境必须启用 exec、proc_open 和 posix_kill 等函数。想着文档可以查看[ThinkAdmin系统异步任务](https://thinkadmin.top/system/core-asynchronous.html)
+- 新版本的任务执行依赖于 symfony/process 组件。为了正常运行，您的运行环境必须启用 exec、proc_open 和 posix_kill 等函数。相关文档可以查看[ThinkAdmin系统异步任务](https://thinkadmin.top/system/core-asynchronous.html)
 
 - 执行 php think xadmin:queue start # 开启异步任务守护进程（后台进程）
 - 执行 php think xadmin:queue stop # 停止所有正在执行的异步任务进程
