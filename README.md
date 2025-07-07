@@ -139,11 +139,11 @@ chown -R www:www ./public/upload
 #### 六、启动计划任务
 - 新版本的任务执行依赖于 symfony/process 组件。为了正常运行，您的运行环境必须启用 exec、proc_open 和 posix_kill 等函数。想着文档可以查看[ThinkAdmin系统异步任务](https://thinkadmin.top/system/core-asynchronous.html)
 
-执行 php think xadmin:queue start # 开启异步任务守护进程（后台进程）
-执行 php think xadmin:queue stop # 停止所有正在执行的异步任务进程
-执行 php think xadmin:queue query # 查询当前所有正在执行的任务进程
-执行 php think xadmin:queue listen # 启动异步任务监听进程（前台进程）
-执行 php think xadmin:queue status # 查看当前守护进程的后台运行状态
+- 执行 php think xadmin:queue start # 开启异步任务守护进程（后台进程）
+- 执行 php think xadmin:queue stop # 停止所有正在执行的异步任务进程
+- 执行 php think xadmin:queue query # 查询当前所有正在执行的任务进程
+- 执行 php think xadmin:queue listen # 启动异步任务监听进程（前台进程）
+- 执行 php think xadmin:queue status # 查看当前守护进程的后台运行状态
 
 
 #### 管理端部分页面展示
