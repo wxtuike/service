@@ -37,4 +37,21 @@ class Goods extends Base
         $data['is_bind_wxtk'] = $this->isBindTk();
         success($data);
     }
+
+    public function getAi()
+    {
+        $id =  input('id');
+        $data = GoodsService::instance()->ai($id);
+        success($data);
+    }
+    public function saveAi()
+    {
+        $id =  input('id');
+        $content = input('content', '');
+        if (empty($content)) {
+            fail("内容不能为空！");
+        }
+        $data = GoodsService::instance()->saveAi($id, $content);
+        success($data);
+    }
 }

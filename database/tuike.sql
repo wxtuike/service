@@ -4271,4 +4271,15 @@ CREATE TABLE `tk_user_token` (
   KEY `idx_token` (`token`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- ----------------------------
+-- Table structure for tk_goods_ai
+-- ----------------------------
+DROP TABLE IF EXISTS `tk_goods_ai`;
+CREATE TABLE `tk_goods_ai` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '商品ID',
+  `content` varchar(256) NOT NULL DEFAULT '' COMMENT '爆款文案内容',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品推广文案';
 SET FOREIGN_KEY_CHECKS = 1;

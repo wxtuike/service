@@ -16,6 +16,21 @@ use think\facade\Db;
  */
 class GoodsService extends Service
 {
+    /** ai文案 */
+    public function ai($id)
+    {
+        $list = Db::name('TkGoodsAi')->where('goods_id', $id)->limit(5)->select();
+        return $list;
+    }
+
+    /**
+     * 保存AI文案
+     */
+    public function saveAi($id, $content)
+    {
+        Db::name('TkGoodsAi')->insert(['goods_id' => $id, 'content' => $content]);
+        return true;
+    }
     public function banner()
     {
         $list = Db::name('TkBanner')->select()->order('sort desc, id desc');
