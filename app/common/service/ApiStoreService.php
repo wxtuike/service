@@ -70,6 +70,7 @@ class ApiStoreService extends Service
                 $count++;
                 $row = Db::name('TkTalent')->where(['talent_appid' => $promoter['promoter_id'], 'shop_appid' => $store['shop_appid']])->find();
                 if (!$row) {
+                    $data['type'] = 3;
                     Db::name('TkTalent')->insert($data);
                 } else {
                     Db::name('TkTalent')->where(['talent_appid' => $promoter['promoter_id'], 'shop_appid' => $store['shop_appid']])->update($data);

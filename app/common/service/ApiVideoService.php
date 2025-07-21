@@ -37,6 +37,7 @@ class ApiVideoService extends Service
                 $row = Db::name('TkTalent')->where(['talent_appid' => $appid])->find();
                 if (!$row) {
                     $insert++;
+                    $data['type'] = 3;
                     Db::name('TkTalent')->insert($data);
                 } else {
                     Db::name('TkTalent')->where(['talent_appid' => $appid])->update($data);
