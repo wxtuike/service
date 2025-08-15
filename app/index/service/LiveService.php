@@ -150,8 +150,12 @@ SQL;
         if ($type == 0) {
             if ($isShop == 0) {
                 $res = ApiService::liveNoticeQrcode($liveId, $talent_appid, $sharerAppid);
+                $linkRes = ApiService::getLiveNoticePromotersharelink($liveId, $talent_appid, $sharerAppid);
+                $promoter_share_link = $linkRes['promoter_share_link'] ?? '';
             } else {
                 $res = ApiService::getShopLiveNoticeRecordQrCode($shop_appid, $promoter_id, $export_id, $sharerAppid);
+                $linkRes = ApiService::getShopLiveNoticePromotersharelink($shop_appid, $promoter_id, $export_id, $sharerAppid);
+                $promoter_share_link = $linkRes['promoter_share_link'] ?? '';
             }
         } else {
             if ($isShop == 0) {

@@ -16,6 +16,35 @@ class ApiService extends Service
     const IS_DEBUG = true;
 
     /***
+     * 为某个推客生成获取小店关联账号直播预约的推广参数
+     */
+    public static function getShopLiveNoticePromotersharelink($shop_appid, $promoter_id, $export_id, $sharer_appid)
+    {
+        $url = 'https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_notice_promoter_share_link?access_token=' . self::getToken();
+        $params = [
+            "shop_appid" => $shop_appid,
+            "promoter_id" => $promoter_id,
+            "promoter_type" => 1,
+            "notice_id" => $export_id,
+            "sharer_appid" => $sharer_appid
+        ];
+        return self::post($url, $params);
+    }
+    /**
+     * 为某个推客生成某个达人平台的用于直播预约的推广参数
+     */
+    public static function getLiveNoticePromotersharelink($notice_id, $talent_appid, $sharer_appid)
+    {
+        $url = 'https://api.weixin.qq.com/channels/ec/promoter/get_live_notice_promoter_share_link?access_token=' . self::getToken();
+        $params = [
+            'mini_program_appid' => sysconf('weapp.appid'),
+            'notice_id' => $notice_id,
+            'talent_appid' => $talent_appid,
+            'sharer_appid' => $sharer_appid
+        ];
+        return self::post($url, $params);
+    }
+    /***
      * 获取券ID对应的详情内容
      */
     public static function getCouponDetail($coupon_id)
