@@ -101,10 +101,30 @@ class GoodsService extends Service
             $commission = UserService::instance()->commission($userId, $goodsInfo['commission']);
             $goodsInfo['commission'] = $commission;
             $goodsInfo['price'] = formatMoney2($goodsInfo['price']);
+            // $store_product = $this->getGoodsShareInfo($goodsInfo['id'], $userId);
+            // unset($store_product['user_id']);
+            // unset($store_product['goods_id']);
+            // return ['goods_info' => $goodsInfo, 'store_product' => $store_product];
+            return ['goods_info' => $goodsInfo];
+        }
+        throw new ServiceException('商品不存在');
+    }
+
+    /** 商品分享推客分享相关 */
+    public function share($id, $userId)
+    {
+        $query = Db::name('TkGoods')->field('id,goods_id');
+        if (is_numeric($id)) {
+            $query->where(['id' => $id]);
+        } else {
+            $query->where(['goods_id' => $id]);
+        }
+        $goodsInfo = $query->find();
+        if ($goodsInfo) {
             $store_product = $this->getGoodsShareInfo($goodsInfo['id'], $userId);
             unset($store_product['user_id']);
             unset($store_product['goods_id']);
-            return ['goods_info' => $goodsInfo, 'store_product' => $store_product];
+            return ['store_product' => $store_product];
         }
         throw new ServiceException('商品不存在');
     }

@@ -845,6 +845,47 @@ class ApiService extends Service
         return self::post($url, ['code' => $code]);
     }
 
+
+    /** 获取小程序的openid */
+    public static function getOpenId($code)
+    {
+        $appid = sysconf('weapp.appid');
+        $appsecret = sysconf('weapp.appsecret');
+        $url = sprintf(
+            'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code',
+            $appid,
+            $appsecret,
+            $code
+        );
+        $res = self::get($url);
+        return $res['openid'] ?? '';
+    }
+
+    /**
+     * 获取小程序码（永久有效）
+     * 接口B：适用于需要的码数量极多的业务场景
+     * @param string $scene 最大32个可见字符，只支持数字
+     * @param string $page 必须是已经发布的小程序存在的页面
+     * @param integer $width 二维码的宽度
+     * @param bool $autoColor 自动配置线条颜色，如果颜色依然是黑色，则说明不建议配置主色调
+     * @param null|array $lineColor auto_color 为 false 时生效
+     * @param bool $isHyaline 是否需要透明底色
+     * @param null|string $outType 输出类型
+     * @param array $extra 其他参数
+     * @return array|string
+     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws \WeChat\Exceptions\LocalCacheException
+     */
+    public static function createMiniScene($scene, $page = '', $width = 430, $autoColor = false, $lineColor = null, $isHyaline = true, $outType = null, array $extra = [])
+    {
+        $url = 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' . self::getWeAppToken();
+        $lineColor = empty($lineColor) ? ["r" => "0", "g" => "0", "b" => "0"] : $lineColor;
+        $data = ['scene' => $scene, 'width' => $width, 'page' => $page, 'auto_color' => $autoColor, 'line_color' => $lineColor, 'is_hyaline' => $isHyaline, 'check_path' => false];
+        if (empty($page)) unset($data['page']);
+        $json = array_merge($data, $extra);
+        return self::post($url, $json, false);
+    }
+
     /**
      * 获取小程序access_token
      */
@@ -905,7 +946,7 @@ class ApiService extends Service
         return json_decode($response, true);
     }
 
-    private static function post($url, $params)
+    private static function post($url, $params, $isDecode = true)
     {
         $curl = curl_init();
         $fields = json_encode($params);
@@ -921,6 +962,9 @@ class ApiService extends Service
         ));
         $response = curl_exec($curl);
         curl_close($curl);
-        return json_decode($response, true);
+        if ($isDecode) {
+            return json_decode($response, true);
+        }
+        return $response;
     }
 }

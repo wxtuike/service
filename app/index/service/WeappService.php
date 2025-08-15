@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace app\index\service;
 
+use app\common\service\ApiService;
 use think\admin\Service;
 
 /**
@@ -31,13 +32,7 @@ class WeappService extends Service
      */
     public function getOpenId($code)
     {
-        $config = [
-            'appid' => sysconf('weapp.appid'),
-            'appsecret' => sysconf('weapp.appsecret'),
-        ];
-        $wxamp = new \WeMini\Crypt($config);
-        $result = $wxamp->session($code);
-        return $result['openid'] ?? '';
+        return ApiService::getOpenId($code);
     }
 
     /**
@@ -46,16 +41,12 @@ class WeappService extends Service
      */
     public function getQrCode($code)
     {
+        // todo::分布式环境要考虑放在云存储上,这里放在本地存储
         $path = sprintf("%spublic/qrcode/%s.png", $this->app->getRootPath(), $code);
         if (file_exists($path)) {
             return true;
         }
-        $config = [
-            'appid' => sysconf('weapp.appid'),
-            'appsecret' => sysconf('weapp.appsecret'),
-        ];
-        $wxamp = new \WeMini\Qrcode($config);
-        $res = $wxamp->createMiniScene('mid=' . $code);
+        $res = ApiService::createMiniScene('mid=' . $code);
         if ($res) {
             file_put_contents($path, $res);
         }

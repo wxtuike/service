@@ -38,6 +38,15 @@ class Goods extends Base
         success($data);
     }
 
+    /** 商品推客分享相关 */
+    public function share()
+    {
+        $id =  input('id');
+        $data = GoodsService::instance()->share($id, $this->userId);
+        $data['is_bind_wxtk'] = $this->isBindTk();
+        success($data);
+    }
+
     public function getAi()
     {
         $id =  input('id');
