@@ -56,8 +56,17 @@ class GoodsService extends Service
     public function syncAllGoods2()
     {
         $list = ApiService::getSubscribe();
+        $productIds = [];
         foreach ($list as $data) {
-            $this->updateGoods2($data['product_id'], $data['shop_appid']);
+            $res = $this->updateGoods2($data['product_id'], $data['shop_appid']);
+            if ($res) {
+                $productIds[] = $data['product_id'];
+            }
+        }
+        if (count($productIds) > 0) {
+            $this->app->db->name('TkGoods')
+                ->whereNotIn('product_id', $productIds)
+                ->update(['status' => 0, 'goods_status' => 0]);
         }
         return count($list);
     }
@@ -86,7 +95,7 @@ class GoodsService extends Service
     {
         $find = $this->app->db->name('TkGoods')->field('id')->where(['product_id' => $productId, 'shop_appid' => $shopAppId])->find();
         if ($find && !$forceUpdate) {
-            return false;
+            return true;
         }
         $goods = ApiService::getGoodsInfo2($productId, $shopAppId);
         $planType = $goods['plan_type'] ?? 0;

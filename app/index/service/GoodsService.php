@@ -60,6 +60,7 @@ class GoodsService extends Service
     {
         $query = Db::name('TkGoods')
             ->field('id,goods_id,title,sub_title,price,thumb,commission')
+            ->where('status', 1)
             ->order('id desc');
         if (!empty($keyword)) {
             $query->whereLike('title', "%{$keyword}%");
@@ -82,7 +83,9 @@ class GoodsService extends Service
     }
     public function detail($id, $userId)
     {
-        $query = Db::name('TkGoods')->field('id,goods_id,product_id,plan_type,shop_appid,title,sub_title,thumb,price,commission');
+        $query = Db::name('TkGoods')
+            ->field('id,goods_id,product_id,plan_type,shop_appid,title,sub_title,thumb,price,commission')
+            ->where('status', 1);
         if (is_numeric($id)) {
             $query->where(['id' => $id]);
         } else {
