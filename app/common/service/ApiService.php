@@ -16,6 +16,19 @@ class ApiService extends Service
     const IS_DEBUG = true;
 
     /***
+     * 获取某个券ID对应的小程序内嵌微信小店优惠券推广参数
+     */
+    public static function getPromoteCouponPromoterShareLink($couponId, $sharerAppId)
+    {
+        $url = 'https://api.weixin.qq.com/channels/ec/promoter/get_coupon_promoter_share_link?access_token=' . self::getToken();
+        $params = [
+            "coupon_id" => $couponId,
+            'sharer_appid' => $sharerAppId
+        ];
+        return self::post($url, $params);
+    }
+
+    /***
      * 为某个推客生成获取小店关联账号直播预约的推广参数
      */
     public static function getShopLiveNoticePromotersharelink($shop_appid, $promoter_id, $export_id, $sharer_appid)

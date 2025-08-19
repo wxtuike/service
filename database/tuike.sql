@@ -4282,4 +4282,19 @@ CREATE TABLE `tk_goods_ai` (
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品推广文案';
+
+-- ----------------------------
+-- Table structure for tk_user_coupon
+-- ----------------------------
+DROP TABLE IF EXISTS `tk_user_coupon`;
+CREATE TABLE `tk_user_coupon` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL COMMENT '用户id',
+  `coupon_id` int(11) unsigned NOT NULL COMMENT 'coupon_id',
+  `shop_appid` varchar(32) DEFAULT '',
+  `promoter_share_link` varchar(256) DEFAULT '',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='推客优惠券记录表';
+
 SET FOREIGN_KEY_CHECKS = 1;

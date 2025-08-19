@@ -63,4 +63,12 @@ class Goods extends Base
         $data = GoodsService::instance()->saveAi($id, $content);
         success($data);
     }
+
+    /** 商品优惠券相关 */
+    public function coupon()
+    {
+        $id =  input('id');
+        $data = GoodsService::instance()->coupon($id, $this->userId);
+        success($data);
+    }
 }

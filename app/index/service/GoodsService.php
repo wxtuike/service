@@ -181,4 +181,66 @@ class GoodsService extends Service
         }
         return [];
     }
+
+    /** 优惠券 */
+    public function coupon($goodsId, $userId)
+    {
+        $query = Db::name('TkGoods')
+            ->field('id,goods_id,product_id,plan_type,shop_appid')
+            ->where(['status' => 1]);
+        if (is_numeric($goodsId)) {
+            $query->where(['id' => $goodsId]);
+        } else {
+            $query->where(['goods_id' => $goodsId]);
+        }
+        $goodsInfo = $query->find();
+        if ($goodsInfo) {
+            $coupons = $this->getCoupon($goodsInfo['shop_appid'], $userId);
+            return $coupons;
+        }
+        throw new ServiceException('商品不存在');
+    }
+    /**
+     * 获取可用的优惠券列表
+     *
+     * @param string $shopAppid 小店appid
+     * @param int $userId 用户id
+     * @return array
+     */
+    private function getCoupon($shopAppid, $userId)
+    {
+        $res = [];
+        $coupons = Db::name('TkCoupon')
+            ->field('id,coupon_id,shop_appid')
+            ->where(['shop_appid' => $shopAppid, 'status' => 2, 'show' => 1])
+            ->where('end_time', '>', TIMESTAMP)
+            ->order('id', 'desc')
+            ->select();
+        if ($coupons) {
+            $sharerAppid = Db::name('TkUser')->where(['id' => $userId])->value('sharer_appid');
+            foreach ($coupons as $coupon) {
+                $shopAppid = $coupon['shop_appid'];
+                $couponId = $coupon['coupon_id'] . '';
+                $data = [
+                    'user_id' => $userId,
+                    'coupon_id' => $couponId,
+                    'shop_appid' => $shopAppid,
+                ];
+                $userCoupon = Db::name('TkUserCoupon')->where(['coupon_id' => $couponId, 'user_id' => $userId, 'shop_appid' => $shopAppid])->find();
+                if ($userCoupon) {
+                    $data['promoter_share_link'] = $userCoupon['promoter_share_link'];
+                    $res[] = $data;
+                } else {
+                    $shareLinkInfo = ApiService::getPromoteCouponPromoterShareLink($couponId, $sharerAppid);
+                    $shareLink = $shareLinkInfo['promoter_share_link'] ?? '';
+                    if (!empty($shareLink)) {
+                        $data['promoter_share_link'] = $shareLink;
+                        Db::name('TkUserCoupon')->insert($data);
+                        $res[] = $data;
+                    }
+                }
+            }
+        }
+        return $res;
+    }
 }
