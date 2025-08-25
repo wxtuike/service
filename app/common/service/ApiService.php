@@ -951,7 +951,7 @@ class ApiService extends Service
     }
 
     /** 获取推客access_token */
-    private static function getToken()
+    protected static function getToken()
     {
         $key = 'tuike_access_token';
         $accessToken = cache($key);
