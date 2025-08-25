@@ -970,7 +970,7 @@ class ApiService extends Service
         throw new \Exception('获取token失败');
     }
 
-    private static function get($url)
+    protected static function get($url)
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -988,7 +988,7 @@ class ApiService extends Service
         return json_decode($response, true);
     }
 
-    private static function post($url, $params, $isDecode = true)
+    protected static function post($url, $params, $isDecode = true)
     {
         $curl = curl_init();
         $fields = json_encode($params);
