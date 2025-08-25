@@ -25,6 +25,7 @@ class ApiVideoService extends Service
                     'talent_nickname' => $item['talent_nickname'],
                     'talent_head_img' => $item['talent_head_img'],
                 ];
+                $data['talent_head_img'] = str_ireplace('http://', 'https://', $data['talent_head_img']);
                 $exportname = $item['related_finder_exportname_list'] ?? '';
                 if (!empty($exportname)) {
                     $data['related_finder_exportname_list'] = json_encode($exportname);
@@ -43,12 +44,11 @@ class ApiVideoService extends Service
                     Db::name('TkTalent')->where(['talent_appid' => $appid])->update($data);
                 }
             }
+            $query = $this->app->db->name('TkTalent')->where(['is_shop' => 0]);
             if (count($ids) > 0) {
-                $update = $this->app->db->name('TkTalent')
-                    ->whereNotIn('talent_appid', $ids)
-                    ->where('is_shop', 0)
-                    ->update(['is_bind' => 0, 'status' => 0]);
+                $query->whereNotIn('talent_appid', $ids);
             }
+            $update = $query->update(['is_bind' => 0, 'status' => 0]);
         }
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
@@ -88,12 +88,11 @@ class ApiVideoService extends Service
                     $this->app->db->name('TkFeed')->insert($d);
                 }
             }
+            $query = $this->app->db->name('TkFeed')->where(['talent_appid' => $appid, 'is_shop' => 0]);
             if (count($ids) > 0) {
-                $update += $this->app->db->name('TkFeed')
-                    ->where(['talent_appid' => $appid, 'is_shop' => 0])
-                    ->whereNotIn('export_id', $ids)
-                    ->update(['status' => 0]);
+                $query->whereNotIn('export_id', $ids);
             }
+            $update = $query->update(['status' => 0]);
         }
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }

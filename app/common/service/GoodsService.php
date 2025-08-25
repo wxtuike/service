@@ -10,6 +10,55 @@ use think\admin\Service;
 
 class GoodsService extends Service
 {
+    /** 商品的计划类型 1：定向计划 2：公开计划 3: 机构定向计划 4: 机构普通计划 */
+    const PLAY_TYPE = [
+        '1-1' => 1, //商家定向
+        '1-2' => 2, //商家公开
+        '2-1' => 3, //机构定向
+        '2-2' => 4, //机构公开
+    ];
+    /** 同步达人商品信息 */
+    public function syncWindow()
+    {
+        $count = 0;
+        $list = HeadService::getCooperativeItemList(1755752400);
+        foreach ($list as $item) {
+            $link = $item['head_supplier_item_link'];
+            $detail = HeadService::getItemPromotionDetail($link);
+            $code = $detail['errcode'] ?? 1;
+            if ($code === 0) {
+                $detail = $detail['item'] ?? [];
+                if (!empty($detail)) {
+                    $productId = $item['product_id'];
+                    $commissionPlanType = $detail['commission_info']['plan_type']; // 商品的计划类型 1：定向计划 2：公开计划
+                    $spuSource = $detail['spu_source']; // 1-商家供货；2-机构供货
+                    $planType = self::PLAY_TYPE[sprintf('%s-%s', $spuSource, $commissionPlanType)]; //商品的计划类型 1：定向计划 2：公开计划 3: 机构定向计划 4: 机构普通计划
+                    $data = [
+                        // 'product_id' => $productId,
+                        // 'plan_type' => $planType,
+                        'cooperative_item_id' => $item['cooperative_item_id'],
+                        'head_supplier_item_link' => $link,
+                        'commission_plan_type' => $commissionPlanType,
+                        'commission_spu_source' => $spuSource,
+                        'commission_type' => $detail['commission_info']['commission_type'],
+                        'commission_service_ratio' => $detail['commission_info']['service_ratio'] ?? 0,
+                        'commission_ratio' => $detail['commission_info']['ratio'] ?? 0,
+                        'commission_start_time' => $detail['commission_info']['start_time'],
+                        'commission_end_time' => $detail['commission_info']['end_time'],
+                        'commission_normal_ratio' => $detail['commission_info']['normal_commission_info']['ratio'] ?? 0,
+                        'head_supplier_name' => $detail['head_supplier_info']['name'] ?? '',
+                        'head_supplier_appid' => $detail['head_supplier_info']['appid'] ?? '',
+                        'cooperative_status' => $detail['cooperative_info']['cooperative_status'],
+                    ];
+                    $count++;
+                    $this->app->db->name('TkGoods')
+                        ->where(['product_id' => $productId, 'plan_type' => $planType])
+                        ->update($data);
+                }
+            }
+        }
+        return $count;
+    }
     /** 同步所有小店信息 */
     public function syncAllShop()
     {
@@ -23,6 +72,11 @@ class GoodsService extends Service
                 $ids[] = $id;
                 $d = $item['base_info'];
                 $d['status'] = $item['status'];
+                if ($d['status'] == 2) {
+                    $d['bind'] = 1;
+                } else {
+                    $d['bind'] = 0;
+                }
                 $row = $this->app->db->name('TkShop')->where(['appid' => $id])->find();
                 if (!$row) {
                     $insert++;
@@ -63,11 +117,11 @@ class GoodsService extends Service
                 $productIds[] = $data['product_id'];
             }
         }
+        $query = $this->app->db->name('TkGoods');
         if (count($productIds) > 0) {
-            $this->app->db->name('TkGoods')
-                ->whereNotIn('product_id', $productIds)
-                ->update(['status' => 0, 'goods_status' => 0]);
+            $query->whereNotIn('product_id', $productIds);
         }
+        $query->update(['status' => 0, 'goods_status' => 0]);
         return count($list);
     }
 

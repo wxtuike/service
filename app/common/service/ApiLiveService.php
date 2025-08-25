@@ -52,12 +52,12 @@ class ApiLiveService extends Service
                 }
             }
         }
+        $query = $this->app->db->name('TkLive')
+            ->where(['type' => 0, 'is_shop' => 0]);
         if (count($ids) > 0) {
-            $update = $this->app->db->name('TkLive')
-                ->where(['type' => 0, 'is_shop' => 0])
-                ->whereNotIn('live_id', $ids)
-                ->update(['live_status' => 0]);
+            $query->whereNotIn('live_id', $ids);
         }
+        $update = $query->update(['live_status' => 0]);
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
 
@@ -104,12 +104,11 @@ class ApiLiveService extends Service
                 }
             }
         }
+        $query = $this->app->db->name('TkLive')->where(['type' => 1, 'is_shop' => 0]);
         if (count($ids) > 0) {
-            $update = $this->app->db->name('TkLive')
-                ->where(['type' => 1, 'is_shop' => 0])
-                ->whereNotIn('live_id', $ids)
-                ->update(['live_status' => 0]);
+            $query->whereNotIn('live_id', $ids);
         }
+        $update = $query->update(['live_status' => 0]);
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
 
@@ -123,8 +122,8 @@ class ApiLiveService extends Service
             ->whereIn('type', [1, 3]) //1直播，2短视频，3两者
             ->select();
         $count = $insert = $update = 0;
-        $ids = [];
         foreach ($list as $talent) {
+            $ids = [];
             $appid = $talent['talent_appid'];
             $list = ApiService::getAllLiveProduct($appid);
             if (count($list) == 0) {
@@ -143,12 +142,12 @@ class ApiLiveService extends Service
                     $insert++;
                 }
             }
+            $query = $this->app->db->name('TkLiveProduct')
+                ->where(['talent_appid' => $appid]);
             if (count($ids) > 0) {
-                $update += $this->app->db->name('TkLiveProduct')
-                    ->where(['talent_appid' => $appid])
-                    ->whereNotIn('product_id', $ids)
-                    ->update(['status' => 0]);
+                $query->whereNotIn('product_id', $ids);
             }
+            $update += $query->update(['status' => 0]);
         }
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }

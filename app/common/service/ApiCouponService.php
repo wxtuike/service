@@ -21,11 +21,12 @@ class ApiCouponService extends Service
         $ids2 = $this->getCooperativeCouponList();
         $ids = array_merge($ids1, $ids2);
         $count = count($ids);
+
+        $query = $this->app->db->name('TkCoupon');
         if ($count > 0) {
-            $update = Db::name('TkCoupon')
-                ->whereNotIn('coupon_id', $ids)
-                ->update(['show' => 0]);
+            $query->whereNotIn('coupon_id', $ids);
         }
+        $update = $query->update(['show' => 0, 'status' => 0]);
         return ['count' => $count, 'update' => $update];
     }
 

@@ -77,13 +77,11 @@ class ApiStoreService extends Service
                 }
             }
         }
-        $update = 0;
+        $query = $this->app->db->name('TkTalent')->where('is_shop', 1);
         if (count($ids) > 0) {
-            $update = $this->app->db->name('TkTalent')
-                ->whereNotIn('talent_appid', $ids)
-                ->where('is_shop', 1)
-                ->update(['is_bind' => 0, 'status' => 0]);
+            $query->whereNotIn('talent_appid', $ids);
         }
+        $update = $query->update(['is_bind' => 0, 'status' => 0]);
         return ['count' => $count, 'update' => $update];
     }
 
@@ -134,13 +132,11 @@ class ApiStoreService extends Service
                 }
             }
         }
+        $query = $this->app->db->name('TkLive')->where(['is_shop' => 1, 'type' => 0]);
         if (count($ids) > 0) {
-            $update = $this->app->db->name('TkLive')
-                ->where(['type' => 0])
-                ->where(['is_shop' => 1])
-                ->whereNotIn('live_id', $ids)
-                ->update(['live_status' => 0]);
+            $query->whereNotIn('live_id', $ids);
         }
+        $update = $query->update(['live_status' => 0]);
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
 
@@ -191,12 +187,11 @@ class ApiStoreService extends Service
                 }
             }
         }
+        $query = $this->app->db->name('TkLive')->where(['is_shop' => 1, 'type' => 1]);
         if (count($ids) > 0) {
-            $update = $this->app->db->name('TkLive')
-                ->where(['type' => 1, 'is_shop' => 1])
-                ->whereNotIn('live_id', $ids)
-                ->update(['live_status' => 0]);
+            $query->whereNotIn('live_id', $ids);
         }
+        $update = $query->update(['live_status' => 0]);
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
 
@@ -241,12 +236,11 @@ class ApiStoreService extends Service
                     $update++;
                 }
             }
+            $query = $this->app->db->name('TkLiveProduct')->where(['talent_appid' => $appid]);
             if (count($ids) > 0) {
-                $update += $this->app->db->name('TkLiveProduct')
-                    ->where(['talent_appid' => $appid])
-                    ->whereNotIn('product_id', $ids)
-                    ->update(['status' => 0]);
+                $query->whereNotIn('product_id', $ids);
             }
+            $update = $query->update(['status' => 0]);
         }
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
@@ -293,12 +287,11 @@ class ApiStoreService extends Service
                     $this->app->db->name('TkFeed')->where('id', $row['id'])->update($d);
                 }
             }
+            $query = $this->app->db->name('TkFeed')->where(['talent_appid' => $appid, 'is_shop' => 1]);
             if (count($ids) > 0) {
-                $update += $this->app->db->name('TkFeed')
-                    ->where(['talent_appid' => $appid, 'is_shop' => 1])
-                    ->whereNotIn('export_id', $ids)
-                    ->update(['status' => 0]);
+                $query->whereNotIn('export_id', $ids);
             }
+            $update = $query->update(['status' => 0]);
         }
         return ['count' => $count, 'insert' => $insert, 'update' => $update];
     }
