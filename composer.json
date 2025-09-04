@@ -1,26 +1,22 @@
 {
   "type": "project",
-  "name": "zoujingli/thinkadmin",
+  "name": "xiaotuike/tuike",
   "license": "MIT",
-  "homepage": "https://thinkadmin.top",
+  "homepage": "https://gitee.com/xiaotuike",
   "description": "Application Development Framework",
   "keywords": [
-    "ThinkAdmin",
-    "ThinkLibrary"
+    "tuike"
   ],
   "authors": [
     {
-      "name": "Anyon",
-      "email": "zoujingli@qq.com"
+      "name": "Wander",
+      "email": "13834563@qq.com"
     }
   ],
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
-    "topthink/think-orm": "^2.0|^3.0",
-    "zoujingli/think-library": "^6.1",
-    "zoujingli/think-plugs-admin": "^1.0",
-    "zoujingli/think-plugs-wechat": "^1.0"
+    "topthink/think-orm": "^2.0|^3.0"
   },
   "autoload": {
     "psr-0": {
@@ -28,12 +24,6 @@
     },
     "psr-4": {
       "app\\": "app"
-    }
-  },
-  "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "zoujingli/think-install": true
     }
   }
 }
