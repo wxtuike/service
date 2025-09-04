@@ -95,10 +95,18 @@ INSERT INTO `system_config` VALUES (8, 'base', 'site_theme', 'default');
 INSERT INTO `system_config` VALUES (9, 'storage', 'allow_exts', 'doc,gif,ico,jpg,mp3,mp4,p12,pem,png,zip,rar,xls,xlsx');
 INSERT INTO `system_config` VALUES (10, 'storage', 'type', 'local');
 INSERT INTO `system_config` VALUES (11, 'wechat', 'type', 'api');
-INSERT INTO `system_config` VALUES (12, 'base', 'site_host', 'https://tuike.cn');
+INSERT INTO `system_config` VALUES (12, 'base', 'site_host', '');
 INSERT INTO `system_config` VALUES (13, 'storage', 'link_type', 'none');
 INSERT INTO `system_config` VALUES (14, 'storage', 'name_type', 'xmd5');
 INSERT INTO `system_config` VALUES (15, 'storage', 'local_http_protocol', 'follow');
+
+INSERT INTO `system_config` VALUES (16, 'weapp', 'appid', '');
+INSERT INTO `system_config` VALUES (17, 'weapp', 'appsecret', '');
+INSERT INTO `system_config` VALUES (18, 'tuike', 'appid', '');
+INSERT INTO `system_config` VALUES (19, 'tuike', 'appsecret', '');
+INSERT INTO `system_config` VALUES (20, 'tuike', 'token', '');
+INSERT INTO `system_config` VALUES (21, 'tuike', 'encodingaeskey', '');
+
 COMMIT;
 
 -- ----------------------------
